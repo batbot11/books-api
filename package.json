@@ -12,7 +12,11 @@
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "bcrypt": "^3.0.4",
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.0",
+    "mongoose": "^5.4.18",
     "nodemon": "^1.18.10"
   }
 }
