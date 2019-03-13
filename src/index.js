@@ -1,12 +1,15 @@
 import express from "express";
 import path from "path";
 import mongoose from "mongoose";
-import auth from "./auth";
 import bodyParser from "body-parser";
+import dotenv from "dotenv";
 
+import auth from "./auth";
+
+dotenv.config();
 const app = express();
 app.use(bodyParser.json());
-mongoose.connect("mongodb://localhost/books");
+mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true });
 
 app.get("/*", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"))

@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 const schema = new mongoose.Schema({
-    email: {type: String, required: true, lowercase: true, index: true},
+    email: {type: String, required: true, lowercase: true, createIndexes: true},
     passwordHash: {type: String, required: true}
 });
 
@@ -21,7 +21,7 @@ schema.methods.toAuthJSON = function toAuthJSON () {
 schema.methods.generateToken = function generateToken () {
     return jwt.sign({
         email: this.email
-    }, "secretkey")
+    }, process.env.JWT_SECRET)
 }
 
 export default mongoose.model("User", schema);
